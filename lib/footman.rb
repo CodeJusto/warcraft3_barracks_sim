@@ -9,5 +9,9 @@ attr_accessor :health_points, :attack_power
     super
   end
 
+  def attack!(target)
+    target.is_a?(Building) ? super(target,0.5) : super
+  end
+
 end
 

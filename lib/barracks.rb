@@ -1,43 +1,49 @@
-class Barracks
+class Barracks < Building
 
-attr_accessor :gold, :food
+attr_accessor :gold, :food, :lumber
 
-# @@gold = 1000
-# @@food = 60
-# @@f_gold_cost = 135
-# @@f_food_cost = 2
-
-  def initialize(gold=1000, food=80)
-    @gold = gold
-    @food = food
+  def initialize(gold=1000, food=80, health=500, lumber=500)
+    super(health)
+    @gold, @food, @lumber = gold, food, lumber
   end
 
   def can_train_footman?
-    (gold < 135 || food < 2) ? false : true
+    gold > 135 && food > 2
   end
 
   def train_footman
     if can_train_footman? 
-      puts "Footman created!"
       self.gold -= 135
       self.food -= 2
       Footman.new
     else
       nil
-      # puts "Need more food! You require #{@@f_food_cost - @food} more food.
     end
   end
 
   def can_train_peasant?
-    gold < 90 || food < 5 ? false : true
+    gold > 90 && food > 5
   end
 
   def train_peasant
     if can_train_peasant?
-      puts "Peasant created!"
       self.gold -= 90
       self.food -= 5
       Peasant.new
     end
   end
+
+  def can_train_siege?
+    gold > 200 && food > 3 && lumber > 60
+  end
+
+  def train_siege_engine
+    if can_train_siege?
+      self.gold -= 200
+      self.food -= 3
+      self.lumber -= 60
+      SiegeEngine.new
+    end
+  end
+
 end
