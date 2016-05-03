@@ -17,7 +17,7 @@ attr_accessor :gold, :food
   end
 
   def train_footman
-    if self.can_train_footman? 
+    if can_train_footman? 
       puts "Footman created!"
       self.gold -= 135
       self.food -= 2
@@ -33,7 +33,7 @@ attr_accessor :gold, :food
   end
 
   def train_peasant
-    if self.can_train_peasant?
+    if can_train_peasant?
       puts "Peasant created!"
       self.gold -= 90
       self.food -= 5
