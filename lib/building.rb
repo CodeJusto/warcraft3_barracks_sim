@@ -7,7 +7,7 @@ class Building
   end
 
   def damage(attack)
-    @health_points -= (attack).ceil
+    @health_points -= attack.ceil
   end
 
   def dead?

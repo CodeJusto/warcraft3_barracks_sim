@@ -12,13 +12,10 @@ attr_accessor :gold, :food, :lumber
   end
 
   def train_footman
-    if can_train_footman? 
-      self.gold -= 135
-      self.food -= 2
-      Footman.new
-    else
-      nil
-    end
+    return unless can_train_footman?
+    self.gold -= 135
+    self.food -= 2
+    Footman.new
   end
 
   def can_train_peasant?
@@ -26,11 +23,10 @@ attr_accessor :gold, :food, :lumber
   end
 
   def train_peasant
-    if can_train_peasant?
-      self.gold -= 90
-      self.food -= 5
-      Peasant.new
-    end
+    return unless can_train_peasant?
+    self.gold -= 90
+    self.food -= 5
+    Peasant.new
   end
 
   def can_train_siege?
@@ -38,12 +34,11 @@ attr_accessor :gold, :food, :lumber
   end
 
   def train_siege_engine
-    if can_train_siege?
-      self.gold -= 200
-      self.food -= 3
-      self.lumber -= 60
-      SiegeEngine.new
-    end
+    return unless can_train_siege?
+    self.gold -= 200
+    self.food -= 3
+    self.lumber -= 60
+    SiegeEngine.new
   end
 
 end
